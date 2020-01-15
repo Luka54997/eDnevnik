@@ -1,0 +1,35 @@
+﻿@model eDnevnik.Models.StudentViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Students</h2>
+<style>
+    #novi{
+    margin-bottom: 10px;
+    }
+    
+</style>
+<input type="button" id="novi" class="btn btn-primary" value="Add new student" onclick='window.location.href="@Url.Action("New","Student")"' />
+
+
+<table class="table table-bordered table-hover" id="tabla">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Index number</th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach (var student in @Model.Students)
+        {
+        <tr>
+            <td>@Html.ActionLink(student.first_name + " " + student.last_name, "Details", "Student", new { id = student.broj_indeksa }, null)</td>
+            <td>@student.broj_indeksa</td>
+        </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,34 @@
+﻿@model eDnevnik.Models.Student
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Student</h2>
+
+@using (Html.BeginForm("Add", "Student"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.first_name)
+        @Html.TextBoxFor(m => m.first_name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.last_name)
+        @Html.TextBoxFor(m => m.last_name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.broj_indeksa)
+        @Html.TextBoxFor(m => m.broj_indeksa, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.adress)
+        @Html.TextBoxFor(m => m.adress, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.e_mail)
+        @Html.TextBoxFor(m => m.e_mail, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save </button>
+}

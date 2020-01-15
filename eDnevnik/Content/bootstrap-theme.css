@@ -1,0 +1,16 @@
+.navbar-inverse{
+	background-color: #0240fa;
+}
+
+body {
+    padding-top: 0px;
+}
+.navbar-brand{
+    color: #ffffff;
+}
+.navbar-toggle{
+    display:none;
+}
+p{
+    margin-bottom: 0px;
+}

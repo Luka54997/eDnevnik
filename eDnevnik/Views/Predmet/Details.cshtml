@@ -1,0 +1,20 @@
+﻿@model eDnevnik.Models.PredmetViewModel
+@{
+    ViewBag.Title = "SubjectDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Predmeti[0].naziv</h2>
+
+@foreach (var predmet in Model.Predmeti)
+{
+<div>
+    <p>Subject id: @predmet.id_predmeta</p>
+    <p>Professor: @predmet.ime_predavaca</p>
+    <p>ESPB points: @predmet.espb_bodovi</p>
+</div>
+    
+    
+}
+
+

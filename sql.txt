@@ -1,0 +1,28 @@
+CREATE KEYSPACE dnevnik
+WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : '3'};
+
+CREATE TABLE student(
+broj_indeksa int PRIMARY KEY,
+first_name text,
+last_name text,
+address text,
+e_mail text
+);
+
+insert into student(broj_indeksa,address,e_mail,first_name,last_name) values(16194,'Karadjordjeva','milanovic.luka@elfak.rs','Luka','Milanovic');
+insert into student(broj_indeksa,address,e_mail,first_name,last_name) values(16265,'Kneza Milosa','orlovic.ivana@elfak.rs','Ivana','Orlovic');
+
+CREATE TABLE predmet(
+broj_indeksa int,
+id_predmeta int,
+naziv text,
+espb_bodovi int,
+ime_predavaca text,
+ocena int,
+PRIMARY KEY (broj_indeksa, id_predmeta)
+);
+
+insert into predmet(broj_indeksa,id_predmeta,espb_bodovi,ime_predavaca,naziv,ocena) values(16194,1,6,'Aleksandar Stanimirovic','Baze podataka',8);
+insert into predmet(broj_indeksa,id_predmeta,espb_bodovi,ime_predavaca,naziv,ocena) values(16265,1,6,'Aleksandar Stanimirovic','Baze podataka',9);
+insert into predmet(broj_indeksa,id_predmeta,espb_bodovi,ime_predavaca,naziv,ocena) values(16265,2,6,'Aleksandar Stanimirovic','Operativni sistemi',9);
+insert into predmet(broj_indeksa,id_predmeta,espb_bodovi,ime_predavaca,naziv,ocena) values(16194,2,6,'Aleksandar Stanimirovic','Operativni sistemi',8);

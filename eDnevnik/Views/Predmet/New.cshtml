@@ -1,0 +1,41 @@
+﻿@model eDnevnik.Models.Predmet
+@{
+                /**/
+
+                ViewBag.Title = "New";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Subject</h2>
+
+@using (Html.BeginForm("Add", "Predmet"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.id_predmeta)
+        @Html.TextBoxFor(m => m.id_predmeta, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.broj_indeksa)
+        @Html.TextBoxFor(m => m.broj_indeksa, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.naziv)
+        @Html.TextBoxFor(m => m.naziv, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.espb_bodovi)
+        @Html.TextBoxFor(m => m.espb_bodovi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ime_predavaca)
+        @Html.TextBoxFor(m => m.ime_predavaca, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ocena)
+        @Html.TextBoxFor(m => m.ocena, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save </button>
+}
+

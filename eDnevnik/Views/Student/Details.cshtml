@@ -1,0 +1,70 @@
+﻿@model eDnevnik.Models.PredmetViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div>
+
+    <p>First name: @Model.Student.first_name</p>
+    <p>Last name: @Model.Student.last_name</p>
+    <adress>Adress: @Model.Student.adress</adress>
+    <p>E-mail: @Model.Student.e_mail</p>
+
+
+</div>
+
+
+<input type="button" id="noviPredmet" class="btn btn-primary" value="Add new subject" onclick='window.location.href="@Url.Action("New","Predmet")"' />
+<style>
+    #noviPredmet{
+        margin-top:15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+<table id="subjects" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Delete</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var predmet in @Model.Predmeti)
+        {
+            <tr>
+                <td >@Html.ActionLink(predmet.naziv, "Details", "Predmet", new { id = predmet.id_predmeta }, null)</td>
+                <td>@predmet.ocena</td>
+                <td>
+                    <button id="dugme" data-subject-id="id=@predmet.id_predmeta&brIndeksa=@predmet.broj_indeksa" class="btn-link js-delete">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts
+{
+    <script>
+        $(document).ready(() => {            
+            $("#subjects .js-delete").on("click",()=> {
+                var button = $("#dugme");                
+                if (confirm("Are you sure you want to delete subject?")) {                    
+                    $.ajax({
+                        
+                        url: "/api/subjects/?" + button.attr("data-subject-id"),
+                        method: "DELETE",
+                        success: ()=> {                            
+                            button.parents("tr").remove();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+}
+
